@@ -1,5 +1,5 @@
-import { createTheme } from '@mui/material/styles';
-import { red } from '@mui/material/colors';
+import { createTheme } from '@mui/material/styles'
+import { red } from '@mui/material/colors'
 
 // Define el tema
 const theme = createTheme({
@@ -15,6 +15,9 @@ const theme = createTheme({
     },
     background: {
       default: '#8E44AD',
+    },
+    third: {
+      main: '#6B487A',
     },
   },
   typography: {
@@ -43,6 +46,6 @@ const theme = createTheme({
       },
     },
   },
-});
+})
 
-export default theme;
+export default theme
