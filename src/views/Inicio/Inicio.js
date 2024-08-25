@@ -2,8 +2,10 @@ import React, { useState, useRef, useEffect } from 'react'
 import Button from '@mui/material/Button'
 import { Box, Container, Typography } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
+import { setSession } from '../../utils/utils'
+import { useNavigate } from 'react-router-dom'
 
-function Inicio() {
+const Inicio = () => {
   const changeIcon = ['🦒', '🦉', '💜']
   const [index, setIndex] = useState(0)
   const [combo, setCombo] = useState(0)
@@ -11,6 +13,7 @@ function Inicio() {
   const comboTimeout = useRef(null)
   const theme = useTheme()
   const comboHeight = 60 // Altura del componente de combo
+  const navigate = useNavigate()
 
   const resetCombo = () => {
     setCombo(0)
@@ -44,6 +47,11 @@ function Inicio() {
     let newIndex = index + 1
     if (newIndex >= changeIcon.length) newIndex = 0
     setIndex(newIndex)
+  }
+
+  const handleComenzar = () => {
+    setSession({ iniciado: true })
+    navigate('/home')
   }
 
   return (
@@ -86,6 +94,7 @@ function Inicio() {
           variant="contained"
           color="secondary"
           style={{ fontSize: '24px', fontWeight: 'bold', minWidth: '299px' }}
+          onClick={handleComenzar}
         >
           Comenzar
         </Button>

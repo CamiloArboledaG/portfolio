@@ -45,6 +45,14 @@ const theme = createTheme({
         },
       },
     },
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          borderRadius: '15px',
+          boxShadow: 'none',
+        },
+      },
+    },
   },
 })
 
