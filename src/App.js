@@ -28,7 +28,7 @@ function App() {
           >
             <Typography style={{ fontSize: '16px', fontWeight: 'bold' }}>HOME</Typography>
           </Button>
-          <Divider orientation="vertical" style={{ width: '2px' }} />
+          <Divider orientation="vertical" style={{ width: '2px', borderColor: 'transparent' }} />
           <Button
             variant="contained"
             color="secondary"
@@ -44,7 +44,7 @@ function App() {
           >
             <Typography style={{ fontSize: '16px', fontWeight: 'bold' }}>WORKS</Typography>
           </Button>
-          <Divider orientation="vertical" style={{ width: '2px' }} />
+          <Divider orientation="vertical" style={{ width: '2px', borderColor: 'transparent' }} />
           <Button
             variant="contained"
             color="secondary"
@@ -60,7 +60,7 @@ function App() {
           >
             <Typography style={{ fontSize: '16px', fontWeight: 'bold' }}>INFO</Typography>
           </Button>
-          <Divider orientation="vertical" style={{ width: '2px' }} />
+          <Divider orientation="vertical" style={{ width: '2px', borderColor: 'transparent' }} />
           <Button
             variant="contained"
             color="secondary"
@@ -78,7 +78,18 @@ function App() {
           </Button>
         </AppBar>
       </div>
-      <Outlet />
+      <div className="p-5" style={{ height: 'calc(100% - 106px)' }}>
+        <div
+          style={{
+            backgroundColor: '#ECF0F1',
+            height: '100%',
+            borderRadius: '15px',
+            border: '10px solid #6B487A',
+          }}
+        >
+          <Outlet />
+        </div>
+      </div>
     </div>
   )
 }

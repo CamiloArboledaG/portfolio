@@ -30,8 +30,7 @@ const AppRoutes = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<App />}>
-          <Route path="/" element={<Inicio />}></Route>
+        <Route element={<App />}>
           <Route
             path="/home"
             element={
@@ -41,6 +40,7 @@ const AppRoutes = () => {
             }
           />
         </Route>
+        <Route path="/" element={<Inicio />}></Route>
       </Routes>
     </Router>
   )

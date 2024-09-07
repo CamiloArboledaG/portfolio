@@ -55,51 +55,53 @@ const Inicio = () => {
   }
 
   return (
-    <Container className="flex h-full relative">
-      <Box
-        className="absolute left-0"
-        style={{
-          top: combo > 1 ? 0 : -comboHeight,
-          transition: 'top 0.3s ease-out',
-        }}
-      >
+    <div className="h-screen">
+      <Container className="flex h-full relative">
         <Box
+          className="absolute left-0"
           style={{
-            backgroundColor: theme.palette.secondary.main,
-            borderRadius: '0px 0px 15px 15px',
-            borderStyle: 'solid',
-            borderWidth: '0 10px 10px 10px',
-            borderColor: theme.palette.third.main,
-            padding: '10px 40px',
-            height: `${comboHeight}px`,
+            top: combo > 1 ? 0 : -comboHeight,
+            transition: 'top 0.3s ease-out',
           }}
         >
-          <Typography variant="body1" style={{ fontWeight: 'bold' }}>
-            Combo x{combo}
-          </Typography>
+          <Box
+            style={{
+              backgroundColor: theme.palette.secondary.main,
+              borderRadius: '0px 0px 15px 15px',
+              borderStyle: 'solid',
+              borderWidth: '0 10px 10px 10px',
+              borderColor: theme.palette.third.main,
+              padding: '10px 40px',
+              height: `${comboHeight}px`,
+            }}
+          >
+            <Typography variant="body1" style={{ fontWeight: 'bold' }}>
+              Combo x{combo}
+            </Typography>
+          </Box>
         </Box>
-      </Box>
-      <Box className="flex items-center justify-between h-full flex-col p-20">
-        <div className=""></div>
-        <Button
-          onClick={changeIconButton}
-          variant="contained"
-          color="secondary"
-          className="p-10 m-12"
-          style={{ fontSize: '48px', width: '100px', height: '100px' }}
-        >
-          {changeIcon[index]}
-        </Button>
-        <Button
-          variant="contained"
-          color="secondary"
-          style={{ fontSize: '24px', fontWeight: 'bold', minWidth: '299px' }}
-          onClick={handleComenzar}
-        >
-          Comenzar
-        </Button>
-      </Box>
-    </Container>
+        <Box className="flex items-center justify-between h-full flex-col p-20">
+          <div className=""></div>
+          <Button
+            onClick={changeIconButton}
+            variant="contained"
+            color="secondary"
+            className="p-10 m-12"
+            style={{ fontSize: '48px', width: '100px', height: '100px' }}
+          >
+            {changeIcon[index]}
+          </Button>
+          <Button
+            variant="contained"
+            color="secondary"
+            style={{ fontSize: '24px', fontWeight: 'bold', minWidth: '299px' }}
+            onClick={handleComenzar}
+          >
+            Comenzar
+          </Button>
+        </Box>
+      </Container>
+    </div>
   )
 }
 
