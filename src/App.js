@@ -1,13 +1,21 @@
 import { AppBar, Button, Divider, IconButton, Typography } from '@mui/material'
-import React, { useState } from 'react'
-import { Outlet } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 
 function App() {
-  const [activeButton, setActiveButton] = useState('HOME')
+  const [activeButton, setActiveButton] = useState('')
+  const navigate = useNavigate()
+  const location = useLocation()
 
   const handleButtonClick = (buttonName) => {
     setActiveButton(buttonName)
+    navigate(buttonName)
   }
+
+  useEffect(() => {
+    const currentPath = location.pathname.replace('/', '')
+    setActiveButton(currentPath || 'home')
+  }, [location])
 
   return (
     <div className="h-screen">
@@ -16,11 +24,11 @@ function App() {
           <Button
             variant="contained"
             color="secondary"
-            onClick={() => handleButtonClick('HOME')}
+            onClick={() => handleButtonClick('home')}
             style={{
               borderRadius: '15px 0px 0px 15px',
               flex: '1',
-              ...(activeButton === 'HOME' && {
+              ...(activeButton === 'home' && {
                 boxShadow: '0px 0px 0px #2D1F33',
                 transform: 'translate(10px, 10px)',
               }),
@@ -32,11 +40,11 @@ function App() {
           <Button
             variant="contained"
             color="secondary"
-            onClick={() => handleButtonClick('WORKS')}
+            onClick={() => handleButtonClick('works')}
             style={{
               borderRadius: '0px',
               flex: '1',
-              ...(activeButton === 'WORKS' && {
+              ...(activeButton === 'works' && {
                 boxShadow: '0px 0px 0px #2D1F33',
                 transform: 'translate(10px, 10px)',
               }),
@@ -48,11 +56,11 @@ function App() {
           <Button
             variant="contained"
             color="secondary"
-            onClick={() => handleButtonClick('INFO')}
+            onClick={() => handleButtonClick('info')}
             style={{
               borderRadius: '0px',
               flex: '1',
-              ...(activeButton === 'INFO' && {
+              ...(activeButton === 'info' && {
                 boxShadow: '0px 0px 0px #2D1F33',
                 transform: 'translate(10px, 10px)',
               }),
@@ -64,11 +72,11 @@ function App() {
           <Button
             variant="contained"
             color="secondary"
-            onClick={() => handleButtonClick('MORE')}
+            onClick={() => handleButtonClick('more')}
             style={{
               borderRadius: '0px 15px 15px 0px',
               flex: '3',
-              ...(activeButton === 'MORE' && {
+              ...(activeButton === 'more' && {
                 boxShadow: '0px 0px 0px #2D1F33',
                 transform: 'translate(10px, 10px)',
               }),

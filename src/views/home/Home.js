@@ -39,8 +39,8 @@ const Home = () => {
       >
         <Typography
           style={{
-            fontSize: '48px',
-            fontWeight: 'bolder',
+            fontSize: '68px',
+            fontWeight: '900',
             letterSpacing: '0.25em',
             color: '#2D1F33',
           }}

@@ -4,6 +4,9 @@ import Inicio from './views/Inicio/Inicio'
 import App from './App'
 import Home from './views/home/Home'
 import { getSession } from './utils/utils'
+import Works from './views/works/Works'
+import Info from './views/info/Info'
+import More from './views/more/More'
 
 const ProtectedRoute = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(null) // Inicializa como null
@@ -36,6 +39,30 @@ const AppRoutes = () => {
             element={
               <ProtectedRoute>
                 <Home />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/works"
+            element={
+              <ProtectedRoute>
+                <Works />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/info"
+            element={
+              <ProtectedRoute>
+                <Info />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/more"
+            element={
+              <ProtectedRoute>
+                <More />
               </ProtectedRoute>
             }
           />
