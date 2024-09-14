@@ -86,13 +86,17 @@ function App() {
           </Button>
         </AppBar>
       </div>
-      <div className="p-5" style={{ height: 'calc(100% - 106px)' }}>
+      <div
+        className="p-5"
+        style={{ minHeight: 'calc(100% - 106px)', display: 'flex', flexDirection: 'column' }}
+      >
         <div
           style={{
             backgroundColor: '#ECF0F1',
-            height: '100%',
+            flexGrow: 1, // Esto asegura que el div ocupe todo el espacio disponible
             borderRadius: '15px',
             border: '10px solid #6B487A',
+            minHeight: '100%', // Asegura que el div interno tenga la altura mínima
           }}
         >
           <Outlet />
