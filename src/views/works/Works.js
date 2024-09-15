@@ -4,7 +4,7 @@ import CardContentWorks from '../../components/CardContentWorks'
 
 const Works = () => {
   return (
-    <Box display="flex" flexDirection="column" height="100%" padding="50px">
+    <Box display="flex" flexDirection="column" padding="50px">
       <Box flex="1" paddingBottom="50px">
         <Typography
           style={{

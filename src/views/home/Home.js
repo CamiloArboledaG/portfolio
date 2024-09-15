@@ -3,7 +3,7 @@ import React from 'react'
 
 const Home = () => {
   return (
-    <div className="h-full flex">
+    <div className=" flex">
       <div
         style={{
           flex: 1,

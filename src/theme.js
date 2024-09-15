@@ -43,6 +43,13 @@ const theme = createTheme({
             backgroundColor: '#ECF0F1',
           },
         },
+        // Esto sobrescribe el color si se define primary, secondary, etc.
+        containedPrimary: {
+          backgroundColor: '#6B487A', // Usa el color primary
+          '&:hover': {
+            backgroundColor: '#6B487A', // Color oscuro para hover
+          },
+        },
       },
     },
     MuiAppBar: {

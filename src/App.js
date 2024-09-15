@@ -87,20 +87,16 @@ function App() {
         </AppBar>
       </div>
       <div
-        className="p-5"
-        style={{ minHeight: 'calc(100% - 106px)', display: 'flex', flexDirection: 'column' }}
+        style={{
+          margin: '20px',
+          backgroundColor: '#ECF0F1',
+          borderRadius: '15px',
+          border: '10px solid #6B487A',
+          height: 'calc(100% - 146px)', // Asegura que el div interno tenga la altura mínima
+          overflow: 'auto', // Scroll automático cuando el contenido sobrepasa la altura
+        }}
       >
-        <div
-          style={{
-            backgroundColor: '#ECF0F1',
-            flexGrow: 1, // Esto asegura que el div ocupe todo el espacio disponible
-            borderRadius: '15px',
-            border: '10px solid #6B487A',
-            minHeight: '100%', // Asegura que el div interno tenga la altura mínima
-          }}
-        >
-          <Outlet />
-        </div>
+        <Outlet />
       </div>
     </div>
   )
