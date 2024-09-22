@@ -1,6 +1,7 @@
-import { AppBar, Button, Divider, IconButton, Typography } from '@mui/material'
+import { AppBar, Box, Button, Divider, IconButton, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
+import IconChangeButton from './components/IconChangeButton'
 
 function App() {
   const [activeButton, setActiveButton] = useState('')
@@ -21,6 +22,9 @@ function App() {
     <div className="h-screen">
       <div className="p-5">
         <AppBar position="static" style={{ display: 'flex', flexDirection: 'row', height: '66px' }}>
+          <Box paddingRight="20px">
+            <IconChangeButton size="66px" fontSize="28px" />
+          </Box>
           <Button
             variant="contained"
             color="secondary"

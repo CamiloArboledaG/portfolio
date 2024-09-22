@@ -4,10 +4,9 @@ import { Box, Container, Typography } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 import { setSession } from '../../utils/utils'
 import { useNavigate } from 'react-router-dom'
+import IconChangeButton from '../../components/IconChangeButton'
 
 const Inicio = () => {
-  const changeIcon = ['🦒', '🦉', '💜']
-  const [index, setIndex] = useState(0)
   const [combo, setCombo] = useState(0)
   const lastClickTime = useRef(0)
   const comboTimeout = useRef(null)
@@ -43,10 +42,6 @@ const Inicio = () => {
       clearTimeout(comboTimeout.current)
     }
     comboTimeout.current = setTimeout(resetCombo, 500)
-
-    let newIndex = index + 1
-    if (newIndex >= changeIcon.length) newIndex = 0
-    setIndex(newIndex)
   }
 
   const handleComenzar = () => {
@@ -82,15 +77,7 @@ const Inicio = () => {
         </Box>
         <Box className="flex items-center justify-between h-full flex-col p-20">
           <div className=""></div>
-          <Button
-            onClick={changeIconButton}
-            variant="contained"
-            color="secondary"
-            className="p-10 m-12"
-            style={{ fontSize: '48px', width: '100px', height: '100px' }}
-          >
-            {changeIcon[index]}
-          </Button>
+          <IconChangeButton onClickBefore={changeIconButton} />
           <Button
             variant="contained"
             color="secondary"

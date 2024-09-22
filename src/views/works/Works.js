@@ -1,6 +1,7 @@
 import { Box, Typography } from '@mui/material'
 import React from 'react'
 import CardContentWorks from '../../components/CardContentWorks'
+import ComingSoon from '../../components/ComingSoon'
 
 const Works = () => {
   return (
@@ -30,7 +31,7 @@ const Works = () => {
             '&::-webkit-scrollbar-thumb:hover': { backgroundColor: '#555' },
           }}
         >
-          <CardContentWorks title="COMING SOON" srcImage="notFound.svg" />
+          <ComingSoon />
         </Box>
       </Box>
       <Box flex="1">
