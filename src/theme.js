@@ -52,6 +52,26 @@ const theme = createTheme({
         },
       },
     },
+    MuiSelect: {
+      styleOverrides: {
+        root: {
+          borderRadius: '15px',
+          padding: '5px 5px',
+          boxShadow: '10px 10px 0px #2D1F33',
+          backgroundColor: '#ECF0F1',
+          border: 'none',
+        },
+      },
+    },
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          '&:hover': {
+            backgroundColor: '#ECF0F1',
+          },
+        },
+      },
+    },
     MuiAppBar: {
       styleOverrides: {
         root: {
