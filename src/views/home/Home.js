@@ -1,16 +1,26 @@
-import { Typography } from '@mui/material'
+import { Typography, useMediaQuery, useTheme } from '@mui/material'
 import React from 'react'
 
 const Home = () => {
+  const theme = useTheme()
+  const isMediumScreen = useMediaQuery(theme.breakpoints.down('xl'))
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'))
   return (
-    <div className=" flex">
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        flexDirection: isSmallScreen ? 'column-reverse' : 'row',
+        height: !isSmallScreen && '100%',
+      }}
+    >
       <div
         style={{
           flex: 1,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          margin: '8em',
+          margin: isSmallScreen ? '1em' : '8em',
           maxWidth: '50%',
         }}
       >
@@ -34,12 +44,12 @@ const Home = () => {
           flexDirection: 'column',
           alignItems: 'flex-start',
           justifyContent: 'center',
-          marginRight: '8em',
+          margin: isSmallScreen ? '1em' : '0em 8em 0em 0em',
         }}
       >
         <Typography
           style={{
-            fontSize: '68px',
+            fontSize: isMediumScreen ? '36px' : '68px', // Ajuste de fontSize
             fontWeight: '900',
             letterSpacing: '0.25em',
             color: '#2D1F33',
@@ -49,7 +59,7 @@ const Home = () => {
         </Typography>
         <Typography
           style={{
-            fontSize: '24px',
+            fontSize: isMediumScreen ? '18px' : '24px', // Ajuste de fontSize
             fontWeight: 'bolder',
             letterSpacing: '0.15em',
             color: '#2D1F33',
@@ -60,19 +70,19 @@ const Home = () => {
         </Typography>
         <Typography
           style={{
-            fontSize: '16px',
+            fontSize: isMediumScreen ? '14px' : '16px', // Ajuste de fontSize
             fontWeight: 'lighter',
             letterSpacing: '0.10em',
             color: '#2D1F33',
           }}
         >
-          I'm a Full Stack developer who lives in Cali, Colombia.
-          <br />
-          <br />I am a person who likes to take on important challenges to strengthen my knowledge
-          and advance my skills. I have a passion for both frontend and backend development, finding
-          joy in creating seamless and efficient applications from start to finish. Whether it's
-          designing intuitive and responsive user interfaces or building robust server-side logic, I
-          am committed to delivering high-quality solutions.
+          I'm a Full Stack Developer based in Cali, Colombia.
+          <br /> <br /> I am passionate about taking on meaningful challenges that allow me to
+          deepen my knowledge and enhance my skills. With a strong enthusiasm for both frontend and
+          backend development, I find great satisfaction in crafting seamless and efficient
+          applications from concept to completion. Whether I'm designing intuitive, responsive user
+          interfaces or implementing robust server-side logic, I am dedicated to delivering
+          high-quality solutions that meet user needs and exceed expectations.
         </Typography>
       </div>
     </div>
