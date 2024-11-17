@@ -1,10 +1,28 @@
 import { Typography, useMediaQuery, useTheme } from '@mui/material'
-import React from 'react'
+import React, { useState } from 'react'
 
 const Home = () => {
   const theme = useTheme()
   const isMediumScreen = useMediaQuery(theme.breakpoints.down('xl'))
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'))
+  const [transformStyle, setTransformStyle] = useState({})
+
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect()
+    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 30 // Ajusta 20 para el ángulo
+    const y = ((e.clientY - rect.top) / rect.height - 0.5) * 15
+    setTransformStyle({
+      transform: `rotateX(${y}deg) rotateY(${x}deg)`,
+      transition: 'transform 0.1s ease-out',
+    })
+  }
+
+  const handleMouseLeave = () => {
+    setTransformStyle({
+      transform: 'rotateX(0deg) rotateY(0deg)',
+      transition: 'transform 0.3s ease-out',
+    })
+  }
   return (
     <div
       style={{
@@ -24,18 +42,31 @@ const Home = () => {
           maxWidth: '50%',
         }}
       >
-        <img
-          src="yo.svg"
-          alt="Camilo Arboleda Avatar"
+        <div
           style={{
-            height: 'auto',
-            maxWidth: '400px',
-            minWidth: '200px',
-            width: '100%',
             boxShadow: '10px 10px 0px #2D1F33',
             borderRadius: '15px',
+            padding: '10px',
+            display: 'inline-block',
+            border: '1px solid #2D1F33',
           }}
-        />
+        >
+          <img
+            src="yo2.svg"
+            alt="Camilo Arboleda Avatar"
+            loading="lazy" // Lazy load
+            style={{
+              height: 'auto',
+              maxWidth: '400px',
+              minWidth: '200px',
+              width: '100%',
+              borderRadius: '15px',
+              ...transformStyle, // Aplica el efecto dinámico solo a la imagen
+            }}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+          />
+        </div>
       </div>
       <div
         style={{
