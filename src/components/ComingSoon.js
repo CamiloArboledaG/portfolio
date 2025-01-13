@@ -1,5 +1,6 @@
 import { Box, Typography } from '@mui/material'
 import React from 'react'
+import ImageWithSkeleton from './ImageWithSkeleton'
 
 const ComingSoon = () => {
   return (
@@ -10,15 +11,14 @@ const ComingSoon = () => {
       justifyContent="center" // Alinea las imágenes a la derecha
       alignItems="center" // Alinea las imágenes al fondo del contenedor
     >
-      <img
+      <ImageWithSkeleton
         src="notFound.svg"
         alt="Image Works alt"
-        style={{
-          maxHeight: '100px',
-          width: 'auto',
-          height: '100%',
-          objectFit: 'cover',
-          borderRadius: '5px 5px 0px 0px',
+        width={101} // Ancho de la imagen original
+        height={86} // Alto de la imagen original
+        imagesStyles={{
+          width: '101px', // Define el ancho en píxeles
+          borderRadius: '8px',
         }}
       />
       <Typography>COMING SOON</Typography>

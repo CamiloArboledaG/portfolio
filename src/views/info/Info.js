@@ -1,5 +1,6 @@
 import { Box, Button, Typography, useMediaQuery, useTheme } from '@mui/material'
 import React from 'react'
+import ImageWithSkeleton from '../../components/ImageWithSkeleton'
 
 const Info = () => {
   const theme = useTheme()
@@ -37,14 +38,15 @@ const Info = () => {
       >
         <a href="https://github.com/CamiloArboledaG" target="_blank" rel="noopener noreferrer">
           <Button color="primary" variant="contained">
-            <img
+            <ImageWithSkeleton
               src="github.svg"
               alt="Image Works alt"
-              style={{
-                maxHeight: '140px',
-                width: 'auto',
-                height: '100%',
-                objectFit: 'cover',
+              width={50} // Ancho de la imagen original
+              height={50} // Alto de la imagen original
+              imagesStyles={{
+                width: '50px',
+                height: '50px',
+                objectFit: 'cover', // Hace que la imagen se ajuste y llene el espacio manteniendo la proporción
                 borderRadius: '5px 5px 0px 0px',
               }}
             />
@@ -56,14 +58,15 @@ const Info = () => {
           rel="noopener noreferrer"
         >
           <Button color="primary" variant="contained">
-            <img
+            <ImageWithSkeleton
               src="linkedln.svg"
               alt="Image Works alt"
-              style={{
-                maxHeight: '140px',
-                width: 'auto',
-                height: '100%',
-                objectFit: 'cover',
+              width={50} // Ancho de la imagen original
+              height={50} // Alto de la imagen original
+              imagesStyles={{
+                width: '50px',
+                height: '50px',
+                objectFit: 'cover', // Hace que la imagen se ajuste y llene el espacio manteniendo la proporción
                 borderRadius: '5px 5px 0px 0px',
               }}
             />
@@ -71,14 +74,15 @@ const Info = () => {
         </a>
         <a href="https://x.com/camilo_arbga" target="_blank" rel="noopener noreferrer">
           <Button color="primary" variant="contained">
-            <img
+            <ImageWithSkeleton
               src="twitter.svg"
               alt="Image Works alt"
-              style={{
-                maxHeight: '140px',
-                width: 'auto',
-                height: '100%',
-                objectFit: 'cover',
+              width={50} // Ancho de la imagen original
+              height={50} // Alto de la imagen original
+              imagesStyles={{
+                width: '50px',
+                height: '50px',
+                objectFit: 'cover', // Hace que la imagen se ajuste y llene el espacio manteniendo la proporción
                 borderRadius: '5px 5px 0px 0px',
               }}
             />

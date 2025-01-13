@@ -1,5 +1,6 @@
 import { Box, Typography } from '@mui/material'
 import React from 'react'
+import ImageWithSkeleton from './ImageWithSkeleton'
 
 const CardContentWorks = ({ srcImage, title }) => {
   return (
@@ -12,13 +13,14 @@ const CardContentWorks = ({ srcImage, title }) => {
       flexDirection="column"
       alignItems="center"
     >
-      <img
+      <ImageWithSkeleton
         src={srcImage}
         alt="Image Works alt"
-        style={{
-          maxHeight: '140px',
-          width: 'auto',
-          height: '100%', // Hace que ocupe todo el contenedor
+        width={140} // Ancho de la imagen original
+        height={140} // Alto de la imagen original
+        imagesStyles={{
+          width: '140px',
+          height: '140px',
           objectFit: 'cover', // Hace que la imagen se ajuste y llene el espacio manteniendo la proporción
           borderRadius: '5px 5px 0px 0px',
         }}

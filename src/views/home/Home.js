@@ -1,10 +1,12 @@
 import { Typography, useMediaQuery, useTheme } from '@mui/material'
 import React, { useState } from 'react'
+import ImageWithSkeleton from '../../components/ImageWithSkeleton'
 
 const Home = () => {
   const theme = useTheme()
   const isMediumScreen = useMediaQuery(theme.breakpoints.down('xl'))
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'))
+  const isXSmallScreen = useMediaQuery(theme.breakpoints.down('sm'))
   const [transformStyle, setTransformStyle] = useState({})
 
   const handleMouseMove = (e) => {
@@ -38,7 +40,7 @@ const Home = () => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          margin: isSmallScreen ? '1em' : '8em',
+          margin: isSmallScreen ? '1em' : '5em',
           maxWidth: '50%',
         }}
       >
@@ -51,17 +53,16 @@ const Home = () => {
             border: '1px solid #2D1F33',
           }}
         >
-          <img
+          <ImageWithSkeleton
             src="yo2.svg"
             alt="Camilo Arboleda Avatar"
-            loading="lazy" // Lazy load
-            style={{
-              height: 'auto',
-              maxWidth: '400px',
-              minWidth: '200px',
-              width: '100%',
-              borderRadius: '15px',
-              ...transformStyle, // Aplica el efecto dinámico solo a la imagen
+            width={1536} // Ancho de la imagen original
+            height={2048} // Alto de la imagen original
+            imagesStyles={{
+              width: isXSmallScreen ? '200px' : '370px', // Define el ancho en píxeles
+              maxWidth: '400px', // Asegura un máximo si es necesario
+              borderRadius: '8px',
+              ...transformStyle,
             }}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
