@@ -7,6 +7,8 @@ import { getSession } from './utils/utils'
 import Works from './views/works/Works'
 import Info from './views/info/Info'
 import More from './views/more/More'
+import { Blog } from './views/blog/Blog'
+import { BlogView } from './views/blog/BlogView'
 
 const ProtectedRoute = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(null) // Inicializa como null
@@ -63,6 +65,22 @@ const AppRoutes = () => {
             element={
               <ProtectedRoute>
                 <More />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/blog"
+            element={
+              <ProtectedRoute>
+                <Blog />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/blog/:id"
+            element={
+              <ProtectedRoute>
+                <BlogView />
               </ProtectedRoute>
             }
           />

@@ -1,0 +1,11 @@
+{
+    "blog": [
+        {
+            "id": 1,
+            "date": "Sun Feb 02 2025",
+            "title": "My first blog",
+            "summary": "What about this new blog?",
+            "content": "This new blog is about to try to better my english and writting, also the programming skills."
+        }
+    ]
+}

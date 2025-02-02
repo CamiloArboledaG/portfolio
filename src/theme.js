@@ -39,7 +39,6 @@ const theme = createTheme({
           '&:active': {
             boxShadow: '0px 0px 0px #2D1F33', // Cambiar la sombra en active para parecer que el botón se mueve sobre la sombra
             transform: 'translate(10px, 10px)', // Desplazar el botón para tapar la sombra
-            transition: 'none', // Eliminar la transición en active para evitar movimientos raros
             backgroundColor: '#ECF0F1',
           },
         },

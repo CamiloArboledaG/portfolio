@@ -92,6 +92,22 @@ function App() {
             <Button
               variant="contained"
               color="secondary"
+              onClick={() => handleButtonClick('blog')}
+              style={{
+                borderRadius: '0px',
+                flex: '1',
+                ...(activeButton === 'blog' && {
+                  boxShadow: '0px 0px 0px #2D1F33',
+                  transform: 'translate(10px, 10px)',
+                }),
+              }}
+            >
+              <Typography style={{ fontSize: '16px', fontWeight: 'bold' }}>BLOG</Typography>
+            </Button>
+            <Divider orientation="vertical" style={{ width: '2px', borderColor: 'transparent' }} />
+            <Button
+              variant="contained"
+              color="secondary"
               onClick={() => handleButtonClick('more')}
               style={{
                 borderRadius: '0px 15px 15px 0px',
@@ -134,6 +150,9 @@ function App() {
                 </MenuItem>
                 <MenuItem value="info" sx={{ fontSize: '16px', fontWeight: 'bold' }}>
                   INFO
+                </MenuItem>
+                <MenuItem value="blog" sx={{ fontSize: '16px', fontWeight: 'bold' }}>
+                  BLOG
                 </MenuItem>
                 <MenuItem value="more" sx={{ fontSize: '16px', fontWeight: 'bold' }}>
                   MORE
