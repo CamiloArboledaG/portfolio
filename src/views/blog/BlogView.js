@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Box, Typography, useMediaQuery, useTheme } from '@mui/material'
+import { Box, Skeleton, Typography, useMediaQuery, useTheme } from '@mui/material'
 import blogJson from './blogJson.json'
 import { useParams } from 'react-router-dom'
 
@@ -34,7 +34,11 @@ export const BlogView = () => {
       <h1 className="font-bold text-6xl">{blog.title}</h1>
       <span className="text-xs py-3 italic">{blog.date}</span>
       <span className="py-3">
-        <div dangerouslySetInnerHTML={{ __html: content }} />
+        {content ? (
+          <div dangerouslySetInnerHTML={{ __html: content }} />
+        ) : (
+          <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+        )}
       </span>
     </Box>
   )

@@ -1,11 +1,16 @@
 {
     "blog": [
         {
+            "id": 2,
+            "date": "Sun Feb 09 2025",
+            "title": "My habits vs the world",
+            "summary": "My current habits and how I try to fight against the modern world of habits."
+        },
+        {
             "id": 1,
             "date": "Sun Feb 02 2025",
             "title": "My first blog",
-            "summary": "What about this new blog?",
-            "content": "This new blog is about to try to better my english and writting, also the programming skills."
+            "summary": "What about this new blog?"
         }
     ]
 }
