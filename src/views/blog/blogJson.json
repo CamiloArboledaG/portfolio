@@ -1,6 +1,12 @@
 {
     "blog": [
         {
+            "id": 3,
+            "date": "Sun Feb 23 2025",
+            "title": "My Week and a New Idea",
+            "summary": "A regular week, but with a new idea in mind. A project is coming soon."
+        },
+        {
             "id": 2,
             "date": "Sun Feb 09 2025",
             "title": "My habits vs the world",
