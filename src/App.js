@@ -88,7 +88,7 @@ function App() {
             >
               <Typography style={{ fontSize: '16px', fontWeight: 'bold' }}>INFO</Typography>
             </Button>
-            <Divider orientation="vertical" style={{ width: '2px', borderColor: 'transparent' }} />
+            {/* <Divider orientation="vertical" style={{ width: '2px', borderColor: 'transparent' }} />
             <Button
               variant="contained"
               color="secondary"
@@ -103,7 +103,7 @@ function App() {
               }}
             >
               <Typography style={{ fontSize: '16px', fontWeight: 'bold' }}>BLOG</Typography>
-            </Button>
+            </Button> */}
             <Divider orientation="vertical" style={{ width: '2px', borderColor: 'transparent' }} />
             <Button
               variant="contained"
@@ -151,9 +151,9 @@ function App() {
                 <MenuItem value="info" sx={{ fontSize: '16px', fontWeight: 'bold' }}>
                   INFO
                 </MenuItem>
-                <MenuItem value="blog" sx={{ fontSize: '16px', fontWeight: 'bold' }}>
+                {/* <MenuItem value="blog" sx={{ fontSize: '16px', fontWeight: 'bold' }}>
                   BLOG
-                </MenuItem>
+                </MenuItem> */}
                 <MenuItem value="more" sx={{ fontSize: '16px', fontWeight: 'bold' }}>
                   MORE
                 </MenuItem>

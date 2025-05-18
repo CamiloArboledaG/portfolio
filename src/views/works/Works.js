@@ -35,7 +35,14 @@ const Works = () => {
             '&::-webkit-scrollbar-thumb:hover': { backgroundColor: '#555' },
           }}
         >
-          <ComingSoon />
+          <a
+            href="https://guess-what-henna.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ textDecoration: 'none' }}
+          >
+            <CardContentWorks title="Guess What" srcImage="guessWhat.svg" />
+          </a>
         </Box>
       </Box>
       <Box flex="1">

@@ -68,7 +68,7 @@ const AppRoutes = () => {
               </ProtectedRoute>
             }
           />
-          <Route
+          {/* <Route
             path="/blog"
             element={
               <ProtectedRoute>
@@ -83,7 +83,7 @@ const AppRoutes = () => {
                 <BlogView />
               </ProtectedRoute>
             }
-          />
+          /> */}
         </Route>
         <Route path="/" element={<Inicio />}></Route>
       </Routes>
