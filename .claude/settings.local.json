@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx create-next-app@latest:*)",
+      "Bash(npm install:*)",
+      "Bash(copy:*)",
+      "Bash(copy \"C:\\\\Users\\\\camil\\\\proyectos\\\\portfolio\\\\public\\\\globe.svg\" \"C:\\\\Users\\\\camil\\\\proyectos\\\\portfolio\\\\new-portfolio\\\\public\\\\images\\\\globe-software.svg\")",
+      "Bash(copy \"C:\\\\Users\\\\camil\\\\proyectos\\\\portfolio\\\\public\\\\botmeni.svg\" \"C:\\\\Users\\\\camil\\\\proyectos\\\\portfolio\\\\new-portfolio\\\\public\\\\images\\\\botmeni.svg\")",
+      "Bash(copy \"C:\\\\Users\\\\camil\\\\proyectos\\\\portfolio\\\\public\\\\IconPage.png\" \"C:\\\\Users\\\\camil\\\\proyectos\\\\portfolio\\\\new-portfolio\\\\public\\\\favicon.png\")",
+      "Bash(npm run build:*)",
+      "Bash(npm run dev:*)",
+      "Bash(taskkill:*)"
+    ]
+  }
+}
