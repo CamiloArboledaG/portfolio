@@ -8,7 +8,7 @@ const inter = Inter({
   display: 'swap',
 })
 
-const baseUrl = 'https://portfolio-oira3iyoq-camiloarboledags-projects.vercel.app'
+const baseUrl = 'https://portfolio-camiloarboledags-projects.vercel.app'
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
