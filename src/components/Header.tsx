@@ -2,11 +2,28 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Mountain } from 'lucide-react'
 import { NAV_ITEMS } from '@/lib/constants'
+import { scrollBridge } from '@/lib/scrollBridge'
+import { SCROLL_PAGES } from '@/lib/journey'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const SECTION_INDEX: Record<string, number> = {
+    '#about': 1,
+    '#experience': 2,
+    '#projects': 3,
+    '#contact': 4,
+  }
+
+  const handleNav = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    const el = scrollBridge.el
+    const idx = SECTION_INDEX[href]
+    if (!el || idx === undefined) return
+    e.preventDefault()
+    el.scrollTo({ top: idx * el.clientHeight, behavior: 'smooth' })
+  }
 
   const menuVariants = {
     hidden: { opacity: 0, height: 0 },
@@ -32,7 +49,7 @@ export default function Header() {
 
   return (
     <motion.header
-      className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-secondary/20"
+      className="fixed top-0 left-0 right-0 z-50 bg-canopy/80 backdrop-blur-md border-b border-moss/20"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
@@ -41,10 +58,11 @@ export default function Header() {
         <div className="flex items-center justify-between">
           <motion.a
             href="#"
-            className="text-xl font-bold text-text hover:text-primary transition-colors"
+            className="flex items-center gap-2 text-xl font-bold text-mist hover:text-amber transition-colors"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
+            <Mountain size={20} className="text-amber" aria-hidden="true" />
             CA
           </motion.a>
 
@@ -58,10 +76,11 @@ export default function Header() {
               >
                 <a
                   href={item.href}
-                  className="text-text-muted hover:text-primary transition-colors text-sm font-medium relative group"
+                  onClick={(e) => handleNav(e, item.href)}
+                  className="text-stone hover:text-amber transition-colors text-sm font-medium relative group"
                 >
                   {item.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-amber transition-all duration-300 group-hover:w-full" />
                 </a>
               </motion.li>
             ))}
@@ -72,7 +91,8 @@ export default function Header() {
             >
               <motion.a
                 href="#contact"
-                className="px-4 py-2 bg-primary text-text rounded-lg hover:bg-secondary transition-colors text-sm font-medium"
+                onClick={(e) => handleNav(e, '#contact')}
+                className="px-4 py-2 bg-amber text-canopy rounded-lg hover:bg-moss transition-colors text-sm font-medium"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -83,7 +103,7 @@ export default function Header() {
 
           <motion.button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-text p-2"
+            className="md:hidden text-mist p-2"
             aria-label="Toggle menu"
             whileTap={{ scale: 0.9 }}
           >
@@ -127,8 +147,8 @@ export default function Header() {
                   <motion.li key={item.href} variants={menuItemVariants}>
                     <a
                       href={item.href}
-                      onClick={() => setIsMenuOpen(false)}
-                      className="text-text-muted hover:text-primary transition-colors text-sm font-medium block py-2"
+                      onClick={(e) => { handleNav(e, item.href); setIsMenuOpen(false) }}
+                      className="text-stone hover:text-amber transition-colors text-sm font-medium block py-2"
                     >
                       {item.label}
                     </a>
@@ -137,8 +157,8 @@ export default function Header() {
                 <motion.li variants={menuItemVariants}>
                   <a
                     href="#contact"
-                    onClick={() => setIsMenuOpen(false)}
-                    className="inline-block px-4 py-2 bg-primary text-text rounded-lg hover:bg-secondary transition-colors text-sm font-medium"
+                    onClick={(e) => { handleNav(e, '#contact'); setIsMenuOpen(false) }}
+                    className="inline-block px-4 py-2 bg-amber text-canopy rounded-lg hover:bg-moss transition-colors text-sm font-medium"
                   >
                     Contact
                   </a>

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { Tent } from 'lucide-react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { experiences } from '@/lib/data'
@@ -11,16 +12,16 @@ export default function Experience() {
   const reducedMotion = useReducedMotion()
 
   return (
-    <section id="experience" className="py-20 bg-secondary/5" aria-label="Work Experience">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="experience" className="py-20 min-h-screen flex items-center" aria-label="Work Experience">
+      <div className="max-w-6xl mx-auto px-6 rounded-3xl bg-canopy/72 backdrop-blur-md ring-1 ring-moss/25 py-10">
         <motion.h2
-          className="text-3xl md:text-4xl font-bold text-text mb-12"
+          className="text-3xl md:text-4xl font-bold text-mist mb-12"
           initial={{ opacity: reducedMotion ? 1 : 0, x: reducedMotion ? 0 : -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: reducedMotion ? 0 : 0.5 }}
         >
-          <span className="text-primary">#</span> Experience
+          <span className="text-amber">#</span> Experience
         </motion.h2>
 
         <motion.div
@@ -31,7 +32,7 @@ export default function Experience() {
           transition={{ duration: reducedMotion ? 0 : 0.5, delay: reducedMotion ? 0 : 0.2 }}
         >
           <div
-            className="flex md:flex-col gap-2 overflow-x-auto md:overflow-visible border-b md:border-b-0 md:border-l border-secondary/30"
+            className="flex md:flex-col gap-2 overflow-x-auto md:overflow-visible border-b md:border-b-0 md:border-l border-moss/30"
             role="tablist"
             aria-label="Companies"
           >
@@ -45,8 +46,8 @@ export default function Experience() {
                 id={`tab-${index}`}
                 className={`px-4 py-3 text-left text-sm font-medium whitespace-nowrap transition-all ${
                   activeTab === index
-                    ? 'text-primary bg-primary/10 md:border-l-2 md:-ml-[1px] border-primary'
-                    : 'text-text-muted hover:text-text hover:bg-secondary/10'
+                    ? 'text-amber bg-amber/10 md:border-l-2 md:-ml-[1px] border-amber'
+                    : 'text-stone hover:text-mist hover:bg-moss/10'
                 }`}
                 whileHover={reducedMotion ? {} : { x: 4 }}
                 whileTap={reducedMotion ? {} : { scale: 0.98 }}
@@ -73,7 +74,7 @@ export default function Experience() {
                     >
                       <div className="flex items-start gap-4 mb-6">
                         <motion.div
-                          className="w-12 h-12 relative rounded-lg overflow-hidden bg-secondary/20 flex-shrink-0"
+                          className="w-12 h-12 relative rounded-lg overflow-hidden bg-moss/20 flex-shrink-0"
                           whileHover={reducedMotion ? {} : { scale: 1.1, rotate: 5 }}
                         >
                           <Image
@@ -85,11 +86,15 @@ export default function Experience() {
                           />
                         </motion.div>
                         <div>
-                          <h3 className="text-xl font-semibold text-text">{exp.role}</h3>
-                          <p className="text-primary font-medium">{exp.company}</p>
-                          <p className="text-text-muted text-sm">
+                          <h3 className="text-xl font-semibold text-mist">{exp.role}</h3>
+                          <p className="text-amber font-medium">{exp.company}</p>
+                          <p className="text-stone text-sm">
                             <time>{exp.period}</time>
                           </p>
+                          <span className="inline-flex items-center gap-1.5 mt-1 text-xs text-amber/80">
+                            <Tent size={14} aria-hidden="true" />
+                            Campamento {String(1200 + index * 400)} m
+                          </span>
                         </div>
                       </div>
 
@@ -97,7 +102,7 @@ export default function Experience() {
                         {exp.description.map((item, i) => (
                           <motion.li
                             key={i}
-                            className="flex gap-3 text-text-muted"
+                            className="flex gap-3 text-stone"
                             initial={{
                               opacity: reducedMotion ? 1 : 0,
                               x: reducedMotion ? 0 : 10,
@@ -105,7 +110,7 @@ export default function Experience() {
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: reducedMotion ? 0 : i * 0.1 }}
                           >
-                            <span className="text-primary mt-1.5" aria-hidden="true">
+                            <span className="text-amber mt-1.5" aria-hidden="true">
                               ▹
                             </span>
                             <span>{item}</span>

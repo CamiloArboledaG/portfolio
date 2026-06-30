@@ -1,25 +1,27 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Mail } from 'lucide-react'
+import { Mail, Flag } from 'lucide-react'
 import { SOCIAL_LINKS } from '@/lib/constants'
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-20 bg-secondary/5">
-      <div className="max-w-3xl mx-auto px-6 text-center">
+    <section id="contact" className="py-20 min-h-screen flex items-center">
+      <div className="max-w-3xl mx-auto px-6 text-center rounded-3xl bg-canopy/72 backdrop-blur-md ring-1 ring-moss/25 py-10">
         <motion.h2
-          className="text-3xl md:text-4xl font-bold text-text mb-6"
+          className="text-3xl md:text-4xl font-bold text-mist mb-6"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <span className="text-primary">#</span> Get In Touch
+          <span className="inline-flex items-center gap-2">
+            <Flag className="text-amber" size={28} aria-hidden="true" /> Get In Touch
+          </span>
         </motion.h2>
 
         <motion.p
-          className="text-text-muted mb-8 leading-relaxed"
+          className="text-stone mb-8 leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -32,7 +34,7 @@ export default function Contact() {
 
         <motion.a
           href={`mailto:${SOCIAL_LINKS.email}`}
-          className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-text rounded-lg font-medium shadow-[6px_6px_0px_#2D1F33] hover:shadow-[8px_8px_0px_#2D1F33] hover:-translate-x-0.5 hover:-translate-y-0.5 active:shadow-none active:translate-x-1 active:translate-y-1 transition-all"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-amber text-canopy rounded-lg font-medium shadow-lg shadow-pine/40 hover:shadow-xl hover:shadow-amber/30 hover:-translate-y-0.5 active:translate-y-0 transition-all"
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
@@ -45,7 +47,7 @@ export default function Contact() {
         </motion.a>
 
         <motion.p
-          className="mt-6 text-text-muted text-sm"
+          className="mt-6 text-stone text-sm"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

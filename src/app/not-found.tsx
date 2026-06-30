@@ -13,11 +13,11 @@ export default function NotFound() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="text-8xl md:text-9xl font-bold text-primary mb-4">404</h1>
+          <h1 className="text-8xl md:text-9xl font-bold text-amber mb-4">404</h1>
         </motion.div>
 
         <motion.h2
-          className="text-2xl md:text-3xl font-semibold text-text mb-4"
+          className="text-2xl md:text-3xl font-semibold text-mist mb-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
@@ -26,7 +26,7 @@ export default function NotFound() {
         </motion.h2>
 
         <motion.p
-          className="text-text-muted mb-8 max-w-md mx-auto"
+          className="text-stone mb-8 max-w-md mx-auto"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
@@ -42,7 +42,7 @@ export default function NotFound() {
         >
           <Link
             href="/"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-text rounded-lg font-medium shadow-[6px_6px_0px_#2D1F33] hover:shadow-[8px_8px_0px_#2D1F33] hover:-translate-x-0.5 hover:-translate-y-0.5 active:shadow-none active:translate-x-1 active:translate-y-1 transition-all"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-amber text-canopy rounded-lg font-medium shadow-lg shadow-pine/40 hover:shadow-xl hover:shadow-amber/30 hover:-translate-y-0.5 active:translate-y-0 transition-all"
           >
             <Home size={20} />
             Go Home
@@ -50,7 +50,7 @@ export default function NotFound() {
 
           <button
             onClick={() => window.history.back()}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-secondary/20 text-text rounded-lg font-medium hover:bg-secondary/30 transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-moss/20 text-mist rounded-lg font-medium hover:bg-moss/30 transition-colors"
           >
             <ArrowLeft size={20} />
             Go Back

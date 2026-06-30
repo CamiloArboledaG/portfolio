@@ -24,16 +24,16 @@ export default function About() {
   }
 
   return (
-    <section id="about" className="py-20">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="about" className="py-20 min-h-screen flex items-center">
+      <div className="max-w-6xl mx-auto px-6 rounded-3xl bg-canopy/72 backdrop-blur-md ring-1 ring-moss/25 py-10">
         <motion.h2
-          className="text-3xl md:text-4xl font-bold text-text mb-12"
+          className="text-3xl md:text-4xl font-bold text-mist mb-12"
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <span className="text-primary">#</span> About Me
+          <span className="text-amber">#</span> About Me
         </motion.h2>
 
         <div className="grid lg:grid-cols-2 gap-12">
@@ -44,12 +44,12 @@ export default function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <p className="text-text-muted leading-relaxed">
+            <p className="text-stone leading-relaxed">
               Whether I&apos;m designing intuitive, responsive user interfaces or implementing
               robust server-side logic, I am dedicated to delivering high-quality solutions that
               meet user needs and exceed expectations.
             </p>
-            <p className="text-text-muted leading-relaxed">
+            <p className="text-stone leading-relaxed">
               I enjoy working with modern technologies and I&apos;m always eager to learn new tools
               and frameworks that can help me build better software. My approach combines technical
               expertise with a focus on clean, maintainable code.
@@ -62,7 +62,7 @@ export default function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <h3 className="text-xl font-semibold text-text mb-6">Technologies I work with</h3>
+            <h3 className="text-xl font-semibold text-mist mb-6">Technologies I work with</h3>
             <motion.div
               className="flex flex-wrap gap-3"
               variants={containerVariants}
@@ -74,8 +74,8 @@ export default function About() {
                 <motion.span
                   key={skill}
                   variants={skillVariants}
-                  whileHover={{ scale: 1.05, backgroundColor: 'rgba(142, 68, 173, 0.2)' }}
-                  className="px-4 py-2 bg-secondary/20 text-text-muted rounded-lg text-sm hover:text-primary transition-colors cursor-default"
+                  whileHover={{ scale: 1.05, backgroundColor: 'rgba(143, 191, 111, 0.2)' }}
+                  className="px-4 py-2 bg-moss/20 text-stone rounded-full text-sm hover:text-amber transition-colors cursor-default"
                 >
                   {skill}
                 </motion.span>
