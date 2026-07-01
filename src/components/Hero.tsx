@@ -60,7 +60,7 @@ export default function Hero() {
 
   return (
     <section className="min-h-screen flex items-center pt-20 pb-16" aria-label="Introduction">
-      <div className="max-w-6xl mx-auto px-6 w-full rounded-3xl bg-canopy/72 backdrop-blur-md ring-1 ring-moss/25 py-10">
+      <div className="max-w-6xl mx-auto px-6 w-full rounded-3xl bg-parchment/85 backdrop-blur-md ring-1 ring-[var(--line)] py-10">
         <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-16">
           <motion.div
             className="relative group"
@@ -70,9 +70,9 @@ export default function Hero() {
             initial="hidden"
             animate="visible"
           >
-            <div className="absolute -inset-1 bg-gradient-to-r from-amber to-moss rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-300" />
+            <div className="absolute -inset-1 bg-gradient-to-r from-sage to-[var(--sage-deep)] rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-300" />
             <div
-              className="relative w-64 h-80 lg:w-80 lg:h-96 rounded-2xl overflow-hidden border border-moss/30 shadow-2xl shadow-pine/40"
+              className="relative w-64 h-80 lg:w-80 lg:h-96 rounded-2xl overflow-hidden border border-[var(--line)] shadow-2xl shadow-[rgba(51,67,46,0.18)]"
               style={
                 mounted && !reducedMotion
                   ? {
@@ -101,7 +101,7 @@ export default function Hero() {
           >
             <motion.div
               variants={itemVariants}
-              className="flex items-center justify-center lg:justify-start gap-2 text-stone mb-4"
+              className="flex items-center justify-center lg:justify-start gap-2 text-muted mb-4"
             >
               <MapPin size={16} aria-hidden="true" />
               <span className="text-sm">Cali, Colombia</span>
@@ -109,26 +109,29 @@ export default function Hero() {
 
             <motion.h1
               variants={itemVariants}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-mist mb-4"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-bark mb-4"
             >
               CAMILO ARBOLEDA
             </motion.h1>
 
             <motion.h2
               variants={itemVariants}
-              className="text-xl md:text-2xl font-semibold text-amber mb-6"
+              className="text-xl md:text-2xl font-semibold text-sage mb-6"
             >
               Full Stack Developer
             </motion.h2>
 
             <motion.p
               variants={itemVariants}
-              className="text-stone max-w-xl mb-8 leading-relaxed"
+              className="text-muted max-w-xl mb-8 leading-relaxed"
             >
-              I&apos;m passionate about taking on meaningful challenges that allow me to deepen my
-              knowledge and enhance my skills. With a strong enthusiasm for both frontend and
-              backend development, I find great satisfaction in crafting seamless and efficient
-              applications from concept to completion.
+              I&apos;m a Full Stack Developer focused on building scalable,
+              high-performance, user-centered applications, with solid experience
+              across frontend and backend. I work with JavaScript, TypeScript,
+              React, Next.js, Angular, Node.js, Java, C#, Python, Go and Flutter,
+              committed to clean architecture, code quality and continuous
+              improvement — leveraging AI tools such as Claude Code to solve real
+              problems and build products with impact.
             </motion.p>
 
             <motion.div
@@ -138,7 +141,7 @@ export default function Hero() {
               <a
                 href="/files/CamiloArboleda.pdf"
                 download="CamiloArboleda_CV.pdf"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-amber text-canopy rounded-lg font-medium shadow-lg shadow-pine/40 hover:shadow-xl hover:shadow-amber/30 hover:-translate-y-0.5 active:translate-y-0 transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-sage text-parchment rounded-lg font-medium shadow-lg shadow-[rgba(51,67,46,0.18)] hover:shadow-xl hover:shadow-[rgba(107,138,82,0.35)] hover:-translate-y-0.5 active:translate-y-0 transition-all"
                 aria-label="Download Camilo Arboleda's CV as PDF"
               >
                 <Download size={20} aria-hidden="true" />
@@ -150,7 +153,7 @@ export default function Hero() {
                   href={SOCIAL_LINKS.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 bg-moss/20 rounded-lg hover:bg-amber/20 hover:text-amber transition-colors"
+                  className="p-3 bg-sage/12 ring-1 ring-[var(--line)] rounded-lg hover:bg-sage/20 hover:text-sage transition-colors"
                   aria-label="Visit Camilo's GitHub profile"
                   whileHover={reducedMotion ? {} : { scale: 1.1 }}
                   whileTap={reducedMotion ? {} : { scale: 0.95 }}
@@ -161,7 +164,7 @@ export default function Hero() {
                   href={SOCIAL_LINKS.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 bg-moss/20 rounded-lg hover:bg-amber/20 hover:text-amber transition-colors"
+                  className="p-3 bg-sage/12 ring-1 ring-[var(--line)] rounded-lg hover:bg-sage/20 hover:text-sage transition-colors"
                   aria-label="Visit Camilo's LinkedIn profile"
                   whileHover={reducedMotion ? {} : { scale: 1.1 }}
                   whileTap={reducedMotion ? {} : { scale: 0.95 }}
@@ -172,7 +175,7 @@ export default function Hero() {
                   href={SOCIAL_LINKS.twitter}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 bg-moss/20 rounded-lg hover:bg-amber/20 hover:text-amber transition-colors"
+                  className="p-3 bg-sage/12 ring-1 ring-[var(--line)] rounded-lg hover:bg-sage/20 hover:text-sage transition-colors"
                   aria-label="Visit Camilo's Twitter/X profile"
                   whileHover={reducedMotion ? {} : { scale: 1.1 }}
                   whileTap={reducedMotion ? {} : { scale: 0.95 }}

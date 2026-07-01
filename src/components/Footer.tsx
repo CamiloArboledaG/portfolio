@@ -7,7 +7,7 @@ import { SOCIAL_LINKS } from '@/lib/constants'
 export default function Footer() {
   return (
     <motion.footer
-      className="py-8 border-t border-moss/20"
+      className="py-8 border-t border-[var(--line)]"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
@@ -15,13 +15,13 @@ export default function Footer() {
     >
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-stone text-sm">
+          <p className="text-muted text-sm">
             Built by{' '}
             <a
               href={SOCIAL_LINKS.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-amber hover:underline"
+              className="text-sage hover:underline"
             >
               Camilo Arboleda
             </a>
@@ -32,7 +32,7 @@ export default function Footer() {
               href={SOCIAL_LINKS.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-stone hover:text-amber transition-colors"
+              className="text-muted hover:text-sage transition-colors"
               aria-label="GitHub"
               whileHover={{ scale: 1.2, y: -2 }}
               whileTap={{ scale: 0.9 }}
@@ -43,7 +43,7 @@ export default function Footer() {
               href={SOCIAL_LINKS.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-stone hover:text-amber transition-colors"
+              className="text-muted hover:text-sage transition-colors"
               aria-label="LinkedIn"
               whileHover={{ scale: 1.2, y: -2 }}
               whileTap={{ scale: 0.9 }}
@@ -54,7 +54,7 @@ export default function Footer() {
               href={SOCIAL_LINKS.twitter}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-stone hover:text-amber transition-colors"
+              className="text-muted hover:text-sage transition-colors"
               aria-label="Twitter"
               whileHover={{ scale: 1.2, y: -2 }}
               whileTap={{ scale: 0.9 }}
