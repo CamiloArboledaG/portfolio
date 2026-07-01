@@ -3,6 +3,8 @@ export const SOCIAL_LINKS = {
   linkedin: 'https://www.linkedin.com/in/camiloarboledag/',
   twitter: 'https://x.com/camilo_arbga',
   email: 'camiloarboleda2000@gmail.com',
+  phone: '+57 312 680 9951',
+  location: 'Cali, Valle del Cauca, Colombia',
 }
 
 export const NAV_ITEMS = [
