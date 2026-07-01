@@ -9,6 +9,12 @@
   --clay: #c4733d;
   --mist: #eef2e9;
   --stone: #9aa896;
+  --parchment: #f4efe3;
+  --bark: #33432e;
+  --sage: #6b8a52;
+  --sage-deep: #55703f;
+  --muted: #6f7566;
+  --line: rgba(51, 67, 46, 0.15);
 }
 
 @theme inline {
@@ -20,6 +26,10 @@
   --color-clay: var(--clay);
   --color-mist: var(--mist);
   --color-stone: var(--stone);
+  --color-parchment: var(--parchment);
+  --color-bark: var(--bark);
+  --color-sage: var(--sage);
+  --color-muted: var(--muted);
 }
 
 html {
@@ -33,8 +43,8 @@ body {
 }
 
 ::selection {
-  background: var(--amber);
-  color: var(--canopy);
+  background: var(--sage);
+  color: var(--parchment);
 }
 
 ::-webkit-scrollbar {
@@ -46,10 +56,10 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--moss);
+  background: var(--sage);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--fern);
+  background: var(--sage-deep);
 }
