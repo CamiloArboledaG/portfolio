@@ -60,7 +60,7 @@ export default function Hero() {
   }
 
   return (
-    <section className="h-screen flex items-center pt-20 pb-16" aria-label="Introduction">
+    <section className="min-h-screen md:h-screen flex items-center px-4 pt-24 pb-16 scroll-mt-20" aria-label="Introduction">
       <RevealPanel className="max-w-6xl mx-auto px-6 w-full rounded-3xl bg-parchment/85 backdrop-blur-md ring-1 ring-[var(--line)] py-10">
         <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-16">
           <motion.div

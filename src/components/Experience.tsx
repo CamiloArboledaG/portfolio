@@ -13,8 +13,8 @@ export default function Experience() {
   const reducedMotion = useReducedMotion()
 
   return (
-    <section id="experience" className="h-screen flex items-center" aria-label="Work Experience">
-      <RevealPanel className="max-w-6xl mx-auto px-6 rounded-3xl bg-parchment/85 backdrop-blur-md ring-1 ring-[var(--line)] py-10 max-h-[88vh] overflow-y-auto">
+    <section id="experience" className="min-h-screen md:h-screen flex items-center px-4 py-24 md:py-0 scroll-mt-20" aria-label="Work Experience">
+      <RevealPanel className="w-full max-w-6xl mx-auto px-6 rounded-3xl bg-parchment/85 backdrop-blur-md ring-1 ring-[var(--line)] py-10 md:max-h-[88vh] md:overflow-y-auto">
         <motion.h2
           className="text-3xl md:text-4xl font-bold text-bark mb-12"
           initial={{ opacity: reducedMotion ? 1 : 0, x: reducedMotion ? 0 : -20 }}

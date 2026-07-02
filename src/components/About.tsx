@@ -7,8 +7,8 @@ import RevealPanel from '@/components/ui/RevealPanel'
 
 export default function About() {
   return (
-    <section id="about" className="h-screen flex items-center">
-      <RevealPanel className="max-w-6xl mx-auto px-6 rounded-3xl bg-parchment/85 backdrop-blur-md ring-1 ring-[var(--line)] py-10 max-h-[88vh] overflow-y-auto">
+    <section id="about" className="min-h-screen md:h-screen flex items-center px-4 py-24 md:py-0 scroll-mt-20">
+      <RevealPanel className="w-full max-w-6xl mx-auto px-6 rounded-3xl bg-parchment/85 backdrop-blur-md ring-1 ring-[var(--line)] py-10 md:max-h-[88vh] md:overflow-y-auto">
         <motion.h2
           className="text-3xl md:text-4xl font-bold text-bark mb-10"
           initial={{ opacity: 0, x: -20 }}

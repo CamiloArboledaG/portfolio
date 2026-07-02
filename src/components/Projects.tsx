@@ -30,8 +30,8 @@ export default function Projects() {
   }
 
   return (
-    <section id="projects" className="h-screen flex items-center" aria-label="Featured Projects">
-      <RevealPanel className="max-w-6xl mx-auto px-6 rounded-3xl bg-parchment/85 backdrop-blur-md ring-1 ring-[var(--line)] py-10">
+    <section id="projects" className="min-h-screen md:h-screen flex items-center px-4 py-24 md:py-0 scroll-mt-20" aria-label="Featured Projects">
+      <RevealPanel className="w-full max-w-6xl mx-auto px-6 rounded-3xl bg-parchment/85 backdrop-blur-md ring-1 ring-[var(--line)] py-10">
         <motion.h2
           className="text-3xl md:text-4xl font-bold text-bark mb-12"
           initial={{ opacity: reducedMotion ? 1 : 0, x: reducedMotion ? 0 : -20 }}
