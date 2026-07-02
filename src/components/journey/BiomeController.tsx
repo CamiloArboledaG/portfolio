@@ -37,12 +37,22 @@ export default function BiomeController() {
     _fogA.set(from.fog)
     _fogB.set(to.fog)
     _fog.copy(_fogA).lerp(_fogB, local)
-    ;(scene.fog as THREE.Fog).color.copy(_fog)
-    if (!(scene.background instanceof THREE.Color)) scene.background = new THREE.Color()
-    ;(scene.background as THREE.Color).copy(_fog)
+    const fog = scene.fog as THREE.Fog
+    fog.color.copy(_fog)
+    // Al ascender, la niebla se abre para revelar el macizo en la cumbre.
+    fog.near = THREE.MathUtils.lerp(30, 70, t)
+    fog.far = THREE.MathUtils.lerp(180, 420, t)
     if (lightRef.current) {
-      lightRef.current.color.set(from.sun).lerp(_sunB.set(to.sun), local)
-      lightRef.current.intensity = THREE.MathUtils.lerp(from.ambient, to.ambient, local) + 0.4
+      const l = lightRef.current
+      l.color.set(from.sun).lerp(_sunB.set(to.sun), local)
+      l.intensity = THREE.MathUtils.lerp(from.ambient, to.ambient, local) + 0.7
+      // Luz clave que baja a un ángulo rasante y cálido en la cumbre (golden hour),
+      // rozando las laderas nevadas para dar relieve y sombras largas.
+      l.position.set(
+        THREE.MathUtils.lerp(25, -70, t),
+        THREE.MathUtils.lerp(50, 16, t),
+        THREE.MathUtils.lerp(15, -120, t),
+      )
     }
   })
 

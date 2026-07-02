@@ -3,55 +3,77 @@
 Mejoras posibles para el viaje 3D (`src/components/journey/`). No bloquean; el
 sitio funciona. Ordenadas por impacto aproximado.
 
+> **Estado v2 (2026-07-01):** casi todo el backlog aterrizó en el rework v2.
+> Único pendiente real: modelos GLB curados (ver abajo).
+
 ## Visual / arte
 
-- [ ] **Laderas lejanas se ven "pintadas"** (low-poly + fog + normals suaves).
-      Subir detalle del terreno o añadir textura/normal sutil; probar `flatShading`
-      por zonas o un segundo plano de cordillera de fondo.
-- [ ] **Bandera / mojón en la cumbre** como remate del clímax (al llegar a Contact).
-      Pequeño grupo 3D en `z ≈ Z_TOP`.
-- [ ] **Modelos GLB curados** (Task 9 del plan): reemplazar pinos/frailejones/
-      cóndor procedurales por GLB low-poly de licencia permisiva (CC0). Requiere
-      curar assets + `gltf-transform` + `public/models/CREDITS.md`.
-- [ ] **Cóndor**: animar batido de alas sutil y/o mejorar la silueta.
-- [ ] **Variedad de árboles**: 2-3 variantes de pino y arbustos para romper la
-      repetición; rocas dispersas en glaciar/páramo.
-- [ ] **Cielo**: degradado/`Sky` de drei por bioma en vez de solo color de fondo.
-- [ ] **Agua/río** en el valle (plano reflejante simple) para dar vida al inicio.
+- [x] **Laderas lejanas se ven "pintadas"** — resuelto con `SkyDome` (drei `Sky`
+      por bioma) + `DistantRange` (cordillera de fondo en silueta con fog). El
+      horizonte ahora da profundidad/escala.
+- [x] **Bandera / mojón en la cumbre** — `SummitFlag.tsx` (mojón + asta + bandera
+      ondeando) plantado en `z ≈ Z_TOP`, congela bajo reduced-motion.
+- [ ] **Modelos GLB curados** (Task 22 del plan) — **DIFERIDO.** No se pudieron
+      obtener y verificar assets CC0 (licencia) de forma fiable en el entorno; el
+      plan prohíbe expresamente enviar assets sin licencia. Se mantienen las
+      mallas procedurales (mejoradas en el rework). Abrir cuando haya assets CC0
+      verificados: curar + `gltf-transform` + `public/models/CREDITS.md`.
+- [x] **Cóndor** — batido de alas sutil (`wingL`/`wingR` refs, `sin(t*4)`),
+      congela bajo reduced-motion.
+- [x] **Variedad de árboles** — 3 variantes de pino (escala/tinte por hash
+      determinista) + rocas dispersas (dodecaedro) en banda páramo/glaciar.
+- [x] **Cielo** — `SkyDome` con `Sky` de drei; sol/turbidity/rayleigh por
+      `scroll.offset`. Se quitó el `scene.background` de `BiomeController`.
+- [x] **Agua/río** — `Water.tsx`, plano translúcido low-poly con ripple de
+      vértices en el valle (congela bajo reduced-motion).
 
 ## Interacción / cámara
 
-- [ ] **Afinar el snap**: ajustar tiempos (idle 150ms / settle 700ms) si se siente
-      brusco o lento; opción de snap más fuerte tipo full-page.
-- [ ] **Indicador de progreso/altitud** lateral (qué bioma, % de ascenso).
-- [ ] **Micro-parallax de cámara** con el mouse (sutil) para dar profundidad.
-- [ ] **Puntos de interés clicables** en la escena (ej. un cartel del sendero que
-      lleve a una sección).
+- [x] **Afinar el snap** — `SnapScroll` reescrito: `scrollend` nativo con fallback
+      idle (140ms) + guard de settle (650ms); desactivado bajo reduced-motion.
+- [x] **Indicador de progreso/altitud** — `AltitudeGauge.tsx` (portal a
+      `document.body`): % de ascenso + bioma actual; oculto en móvil, decorativo.
+- [x] **Micro-parallax de cámara** — sway con `state.pointer` en `CameraRig`,
+      desactivado bajo reduced-motion.
+- [x] **Puntos de interés clicables** — `PointsOfInterest.tsx`: carteles de
+      sendero que hacen scroll a la sección vía `scrollBridge`.
 
 ## Contenido / legibilidad
 
-- [ ] **Contraste del overlay**: revisar legibilidad sobre fondos claros (cumbre);
-      quizá oscurecer más el glass solo en biomas claros.
-- [ ] **Animación de entrada** de cada panel al centrarse (fade/scale al hacer snap).
-- [ ] **Footer**: hoy no se renderiza en el viaje 3D; decidir si va al final
-      (cumbre) o se omite.
+- [x] **Contraste del overlay** — reskin editorial crema/bosque/sage: paneles
+      `bg-parchment/85` con `ring-[var(--line)]`, texto `bark`/`muted`, acentos
+      `sage`; legible sobre biomas claros.
+- [x] **Animación de entrada** — `RevealPanel` (fade/scale al centrarse, re-dispara
+      al re-entrar por snap, respeta reduced-motion) envuelve los 5 paneles.
+- [x] **Footer** — no se renderiza en el viaje 3D; **decisión: se omite** del
+      ascenso (el clímax es la cumbre + Contact). Componente queda sin uso.
 
 ## Rendimiento / robustez
 
 - [ ] **Probar en móvil real** y equipos modestos; verificar que `PerformanceMonitor`
-      degrada bien (nieve 200, sin postprocesado).
-- [ ] **Lockfiles**: el repo tiene `package-lock.json` (npm) y ahora `pnpm-lock.yaml`.
-      Elegir un gestor y borrar el otro lockfile para evitar instalaciones
-      inconsistentes. (Las deps 3D se agregaron con pnpm.)
-- [ ] **`AnimatedSection.tsx`**: quedó sin uso tras el rediseño; evaluar borrarlo.
-- [ ] **Disposición de recursos**: confirmar que geometrías/materiales se liberan
-      si alguna vez se alterna canvas ↔ fallback varias veces.
-- [ ] **SEO**: el texto vive en overlay HTML (bien), pero validar que el contenido
-      sea indexable con el canvas `ssr:false`.
+      degrada bien (nieve 200, sin postprocesado). *(Pendiente: check manual en
+      dispositivo; el código de degradación está intacto.)*
+- [x] **Lockfiles** — se eliminó `package-lock.json`; se mantiene `pnpm-lock.yaml`
+      (pnpm es el gestor). `pnpm install` resuelve limpio.
+- [x] **`AnimatedSection.tsx`** — confirmado sin uso; eliminado.
+- [ ] **Disposición de recursos** — r3f libera geometrías/materiales al desmontar
+      por defecto; sin globales manuales que persistan. *(Sin fugas evidentes;
+      confirmación fina en alternancia repetida canvas↔fallback queda como check.)*
+- [x] **SEO** — validado: el texto del overlay (`Scroll html`) aparece en el HTML
+      servido (`Full Stack Developer`, `CAMILO ARBOLEDA`, `<title>`), indexable
+      pese a `ssr:false` del canvas.
 
 ## Accesibilidad
 
-- [ ] Revisar foco de teclado al navegar entre secciones con el scroll virtual
-      (el `scrollBridge` mueve por offset; confirmar `scrollIntoView` del foco).
-- [ ] Verificar la experiencia completa con `prefers-reduced-motion` y con WebGL
-      deshabilitado (fallback 2D).
+- [ ] **Foco de teclado** entre secciones — la navegación del Header usa
+      `scrollBridge`; falta confirmar visualmente el foco al saltar por offset.
+      *(Check manual recomendado.)*
+- [x] **reduced-motion + WebGL off** — reduced-motion hilado en snap, cámara,
+      parallax, bandera, agua, cóndor, paneles; `WebGLFallback` (2D) renderiza las
+      5 secciones con la paleta crema. *(Verificación visual final recomendada.)*
+
+## Nota — dev-only
+
+- Advertencia `createRoot` de drei `<Scroll html>` bajo React StrictMode en dev
+  (doble montaje): preexistente, no afecta el build de producción. Evaluar guard
+  o decisión de StrictMode si molesta en desarrollo.

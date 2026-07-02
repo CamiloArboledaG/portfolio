@@ -13,6 +13,8 @@ const CONDOR_Y = 62
 
 export default function Wildlife() {
   const condor = useRef<THREE.Group>(null)
+  const wingL = useRef<THREE.Mesh>(null)
+  const wingR = useRef<THREE.Mesh>(null)
   const reducedMotion = useReducedMotion()
   const sprite = useMemo(() => getParticleTexture(), [])
 
@@ -34,6 +36,11 @@ export default function Wildlife() {
     const tm = state.clock.elapsedTime * 0.15
     condor.current.position.set(Math.cos(tm) * 34, CONDOR_Y, CONDOR_Z + Math.sin(tm) * 26)
     condor.current.rotation.y = -tm
+
+    // aleteo sutil: diedro oscilante en ambas alas
+    const flap = Math.sin(state.clock.elapsedTime * 4) * 0.18
+    if (wingL.current) wingL.current.rotation.z = Math.PI / 2 + flap
+    if (wingR.current) wingR.current.rotation.z = -Math.PI / 2 - flap
   })
 
   return (
@@ -50,11 +57,11 @@ export default function Wildlife() {
           <meshStandardMaterial color="#e8e3d8" flatShading />
         </mesh>
         {/* alas: conos triangulares tendidos en x, barridos atrás y con diedro */}
-        <mesh position={[-2.1, 0.25, -0.3]} rotation={[0.5, 0, Math.PI / 2]}>
+        <mesh ref={wingL} position={[-2.1, 0.25, -0.3]} rotation={[0.5, 0, Math.PI / 2]}>
           <coneGeometry args={[0.8, 4.4, 3]} />
           <meshStandardMaterial color="#1c1714" flatShading side={THREE.DoubleSide} />
         </mesh>
-        <mesh position={[2.1, 0.25, -0.3]} rotation={[0.5, 0, -Math.PI / 2]}>
+        <mesh ref={wingR} position={[2.1, 0.25, -0.3]} rotation={[0.5, 0, -Math.PI / 2]}>
           <coneGeometry args={[0.8, 4.4, 3]} />
           <meshStandardMaterial color="#1c1714" flatShading side={THREE.DoubleSide} />
         </mesh>

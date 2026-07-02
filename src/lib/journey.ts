@@ -55,6 +55,42 @@ export const BIOMES: Biome[] = [
   { name: 'valle', range: [0.0, 0.2], fog: '#9fb87a', ambient: 0.7, sun: '#ffd9a0' },
   { name: 'bosque', range: [0.2, 0.4], fog: '#6f8a64', ambient: 0.55, sun: '#cfe0b0' },
   { name: 'paramo', range: [0.4, 0.6], fog: '#c9c2a6', ambient: 0.7, sun: '#f0e2c0' },
-  { name: 'glaciar', range: [0.6, 0.8], fog: '#aebfcf', ambient: 0.8, sun: '#dfe7f0' },
-  { name: 'cumbre', range: [0.8, 1.0], fog: '#dfe9f2', ambient: 0.9, sun: '#fff4e0' },
+  { name: 'glaciar', range: [0.6, 0.8], fog: '#cfc8c6', ambient: 0.6, sun: '#f4d9ac' },
+  { name: 'cumbre', range: [0.8, 1.0], fog: '#f3c184', ambient: 0.5, sun: '#ffab5c' },
 ]
+
+export const FINALE_START = 0.85
+
+function smoothstep(t: number): number {
+  const x = THREE.MathUtils.clamp(t, 0, 1)
+  return x * x * (3 - 2 * x)
+}
+
+const _climbPos = new THREE.Vector3()
+const _climbLook = new THREE.Vector3()
+const _aerialPos = new THREE.Vector3()
+const _aerialLook = new THREE.Vector3()
+
+// Frame de cámara unificado. offset 0..FINALE_START = ascenso (comprimido);
+// FINALE_START..1 = revelado aéreo: la cámara sube y retrocede para ver todo el macizo.
+export function getCameraFrame(offset: number, pos: THREE.Vector3, target: THREE.Vector3): void {
+  const t = THREE.MathUtils.clamp(offset, 0, 1)
+  if (t <= FINALE_START) {
+    const climb = t / FINALE_START
+    cameraPosition(climb, pos)
+    cameraTarget(climb, target)
+    return
+  }
+  // Punto de llegada a la cumbre (climb = 1).
+  cameraPosition(1, _climbPos)
+  cameraTarget(1, _climbLook)
+  // Mirador de cumbre: cerca de la cima y con la mirada casi horizontal hacia el
+  // sol poniente y las laderas, para no encuadrar el piso vacío del valle.
+  const summitX = pathX(Z_TOP)
+  const summitH = terrainHeight(summitX, Z_TOP)
+  _aerialPos.set(summitX, summitH + 30, Z_TOP + 30)
+  _aerialLook.set(0, summitH + 2, -120)
+  const k = smoothstep((t - FINALE_START) / (1 - FINALE_START))
+  pos.copy(_climbPos).lerp(_aerialPos, k)
+  target.copy(_climbLook).lerp(_aerialLook, k)
+}

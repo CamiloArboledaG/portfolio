@@ -2,16 +2,20 @@
 
 ## Alta Prioridad
 
-- [ ] Agregar 2-4 proyectos más con descripción, tecnologías y links
-- [ ] Agregar métricas/logros medibles en Experience
-- [ ] Definir interfaces TypeScript para datos (Experience, Project, etc.)
+- [~] Agregar 2-4 proyectos más — **decisión deliberada: mantener 1 proyecto real**
+      ("Guess What"). Se prefiere calidad sobre relleno; la card se centró/agrandó
+      para no verse estirada. Reabrir cuando haya proyectos reales que sumar.
+- [x] Agregar métricas/logros medibles en Experience — Experience enriquecido con
+      rol, empresa, periodo, ubicación y bullets del CV por puesto (v2).
+- [x] Definir interfaces TypeScript para datos — `Experience`, `Project`,
+      `SkillGroup`, `Education`, `Certification` en `src/lib/data.ts` (v2).
 
-## Media Prioridad
+## Media Prioridad (diferido)
 
 - [ ] Agregar sección de Blog técnico
 - [ ] Agregar testimonios/recomendaciones de LinkedIn
 
-## Baja Prioridad
+## Baja Prioridad (diferido)
 
 - [ ] Toggle modo claro/oscuro
 
@@ -31,6 +35,16 @@
 - [x] Integrar Vercel Analytics
 - [x] Agregar página 404 personalizada
 - [x] Agregar Open Graph image dinámico para compartir en redes
+
+### v2 — Rework 3D "El Ascenso del Nevado" (2026-07-01)
+- [x] Reskin editorial crema/bosque/sage (paleta CV) en todas las secciones
+- [x] Modelo de datos + contenido del CV (experiencias, skills agrupados, educación, certs)
+- [x] Escena 3D: SkyDome, DistantRange, Water, SummitFlag por bioma
+- [x] Cámara: `getCameraFrame` con final aéreo, micro-parallax, snap robusto
+- [x] AltitudeGauge, RevealPanel, PointsOfInterest clicables
+- [x] Cóndor con batido de alas + variedad de vegetación/rocas
+- [x] Limpieza: lockfile único (pnpm), borrado de código muerto
+- [~] Modelos GLB curados — diferido (sin assets CC0 verificables)
 
 ## Archivos Creados/Modificados
 

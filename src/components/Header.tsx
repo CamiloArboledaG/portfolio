@@ -17,12 +17,27 @@ export default function Header() {
     '#contact': 4,
   }
 
-  const handleNav = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const scrollToSection = (idx: number) => {
     const el = scrollBridge.el
+    if (!el) return
+    const threshold = el.scrollHeight - el.clientHeight
+    const step = threshold / (SCROLL_PAGES - 1)
+    // Evita que SnapScroll cancele el scroll programático de navegación.
+    scrollBridge.suppressUntil = performance.now() + 900
+    el.scrollTo({ top: Math.min(idx * step, threshold), behavior: 'smooth' })
+  }
+
+  const handleNav = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     const idx = SECTION_INDEX[href]
-    if (!el || idx === undefined) return
+    if (!scrollBridge.el || idx === undefined) return
     e.preventDefault()
-    el.scrollTo({ top: idx * el.clientHeight, behavior: 'smooth' })
+    scrollToSection(idx)
+  }
+
+  const handleHome = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!scrollBridge.el) return
+    e.preventDefault()
+    scrollToSection(0)
   }
 
   const menuVariants = {
@@ -58,6 +73,8 @@ export default function Header() {
         <div className="flex items-center justify-between">
           <motion.a
             href="#"
+            onClick={handleHome}
+            aria-label="Ir al inicio"
             className="flex items-center gap-2 text-xl font-bold text-bark hover:text-sage transition-colors"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}

@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import { Github, Linkedin, Twitter, MapPin, Download } from 'lucide-react'
 import { SOCIAL_LINKS } from '@/lib/constants'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
+import RevealPanel from '@/components/ui/RevealPanel'
 
 export default function Hero() {
   const [transform, setTransform] = useState({ x: 0, y: 0 })
@@ -59,8 +60,8 @@ export default function Hero() {
   }
 
   return (
-    <section className="min-h-screen flex items-center pt-20 pb-16" aria-label="Introduction">
-      <div className="max-w-6xl mx-auto px-6 w-full rounded-3xl bg-parchment/85 backdrop-blur-md ring-1 ring-[var(--line)] py-10">
+    <section className="h-screen flex items-center pt-20 pb-16" aria-label="Introduction">
+      <RevealPanel className="max-w-6xl mx-auto px-6 w-full rounded-3xl bg-parchment/85 backdrop-blur-md ring-1 ring-[var(--line)] py-10">
         <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-16">
           <motion.div
             className="relative group"
@@ -186,7 +187,7 @@ export default function Hero() {
             </motion.div>
           </motion.div>
         </div>
-      </div>
+      </RevealPanel>
     </section>
   )
 }

@@ -8,7 +8,7 @@ import Contact from '@/components/Contact'
 
 export default function WebGLFallback() {
   return (
-    <main className="bg-gradient-to-b from-[#dfe9f2] via-[#8a8275] to-[#5f7d3a]">
+    <main className="bg-gradient-to-b from-[#dfe9f2] via-[#b9c3a4] to-[#5f7d3a]">
       <Hero />
       <About />
       <Experience />

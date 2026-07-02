@@ -21,13 +21,24 @@ function colored(input: THREE.BufferGeometry, hex: string) {
 }
 
 // Pino de capas: tronco + 3 conos apilados, con su base en y=0.
-function makePine(): THREE.BufferGeometry {
+// `scale` varía altura/radio y `tint` el verdor entre variantes (variedad determinista por índice).
+function makePine(scale = 1, tint: [string, string, string] = ['#2c4d30', '#356139', '#3f7344']): THREE.BufferGeometry {
   return mergeGeometries([
-    colored(new THREE.CylinderGeometry(0.28, 0.4, 2, 5).translate(0, 1, 0), '#5b3d28'),
-    colored(new THREE.ConeGeometry(2.2, 3, 8).translate(0, 3.4, 0), '#2c4d30'),
-    colored(new THREE.ConeGeometry(1.7, 2.6, 8).translate(0, 5.1, 0), '#356139'),
-    colored(new THREE.ConeGeometry(1.1, 2.1, 8).translate(0, 6.7, 0), '#3f7344'),
+    colored(new THREE.CylinderGeometry(0.28 * scale, 0.4 * scale, 2 * scale, 5).translate(0, 1 * scale, 0), '#5b3d28'),
+    colored(new THREE.ConeGeometry(2.2 * scale, 3 * scale, 8).translate(0, 3.4 * scale, 0), tint[0]),
+    colored(new THREE.ConeGeometry(1.7 * scale, 2.6 * scale, 8).translate(0, 5.1 * scale, 0), tint[1]),
+    colored(new THREE.ConeGeometry(1.1 * scale, 2.1 * scale, 8).translate(0, 6.7 * scale, 0), tint[2]),
   ])
+}
+
+// Roca facetada de baja poli, gris, para los tramos altos de páramo/glaciar.
+function makeRock(): THREE.BufferGeometry {
+  return colored(new THREE.DodecahedronGeometry(1, 0).translate(0, 0.7, 0), '#8a8a86')
+}
+
+// Hash entero determinista → variante estable por índice (sin Math.random).
+function variantOf(i: number, count: number): number {
+  return (i * 2654435761) % count
 }
 
 // Frailejón: tallo grueso + roseta facetada arriba.
@@ -85,20 +96,35 @@ function InstancedGroup({
 }
 
 export default function Vegetation() {
-  const pineGeo = useMemo(makePine, [])
+  // 3 variantes de pino (altura/radio/tinte) repartidas de forma determinista por índice.
+  const pineGeoA = useMemo(() => makePine(0.85, ['#26452a', '#2f5533', '#38663c']), [])
+  const pineGeoB = useMemo(() => makePine(1, ['#2c4d30', '#356139', '#3f7344']), [])
+  const pineGeoC = useMemo(() => makePine(1.2, ['#33582f', '#3e6b3a', '#4c8046']), [])
   const frailejonGeo = useMemo(makeFrailejon, [])
   const bushGeo = useMemo(makeBush, [])
+  const rockGeo = useMemo(makeRock, [])
 
   // bosque z -144..-200, páramo z -96..-144, valle z -200..-238
   const pines = useMemo(() => scatter(110, -144, -200), [])
   const frailejones = useMemo(() => scatter(60, -96, -144), [])
   const bushes = useMemo(() => scatter(80, -200, -238), [])
+  // rocas dispersas en la franja alta páramo/glaciar (offset ~0.4–0.8 → z -144..-48)
+  const rocks = useMemo(() => scatter(22, -48, -144), [])
+
+  const [pinesA, pinesB, pinesC] = useMemo(() => {
+    const groups: THREE.Matrix4[][] = [[], [], []]
+    pines.forEach((m, i) => groups[variantOf(i, 3)].push(m))
+    return groups
+  }, [pines])
 
   return (
     <group>
-      <InstancedGroup geometry={pineGeo} matrices={pines} />
+      <InstancedGroup geometry={pineGeoA} matrices={pinesA} />
+      <InstancedGroup geometry={pineGeoB} matrices={pinesB} />
+      <InstancedGroup geometry={pineGeoC} matrices={pinesC} />
       <InstancedGroup geometry={frailejonGeo} matrices={frailejones} />
       <InstancedGroup geometry={bushGeo} matrices={bushes} />
+      <InstancedGroup geometry={rockGeo} matrices={rocks} />
     </group>
   )
 }

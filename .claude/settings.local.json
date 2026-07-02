@@ -18,7 +18,25 @@
       "Bash(pkill -f \"next dev\")",
       "Bash(pnpm exec *)",
       "Bash(echo \"exit: $?\")",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(bash __TRACKED_VAR__/scripts/task-brief docs/superpowers/plans/2026-07-01-portfolio-v2.md 1)",
+      "Bash(pnpm lint *)",
+      "Bash(git checkout *)",
+      "Bash(git stash *)",
+      "Bash(cd *)",
+      "Bash(git worktree *)",
+      "Bash(git -C /Users/juan.arboleda/personal/portfolio status --short)",
+      "Bash(git -C /Users/juan.arboleda/personal/portfolio branch --show-current)",
+      "Bash(echo \"Task 3: complete \\(commit b0aee7a, verified clean — no amber/mist/stone in Hero/Header/Footer\\)\")",
+      "Read(//Users/juan.arboleda/.claude/plugins/cache/claude-plugins-official/superpowers/6.1.0/skills/subagent-driven-development/scripts/**)",
+      "Bash(mkdir -p /private/tmp/claude-1479533598/-Users-juan-arboleda-personal-portfolio/f51bd88d-06b8-44ba-a034-7dee13cc94d4/scratchpad/sdd)",
+      "Bash(tee /private/tmp/claude-1479533598/-Users-juan-arboleda-personal-portfolio/f51bd88d-06b8-44ba-a034-7dee13cc94d4/scratchpad/lint.log)",
+      "Bash(grep -E \"^/Users.*\\\\.\\(tsx|ts\\)$\")",
+      "Bash(pnpm install *)",
+      "Bash(git fetch *)",
+      "Bash(git merge *)",
+      "Bash(git push *)"
     ]
   }
 }
