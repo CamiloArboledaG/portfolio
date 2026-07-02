@@ -17,11 +17,11 @@ export default function CameraRig() {
   useFrame((state) => {
     getCameraFrame(scroll.offset, _pos, _look)
     if (!reducedMotion) {
-      _pos.x += state.pointer.x * 1.5
-      _pos.y += state.pointer.y * 0.8
+      _pos.x += state.pointer.x * 0.5
+      _pos.y += state.pointer.y * 0.25
     }
     if (reducedMotion) camera.position.copy(_pos)
-    else camera.position.lerp(_pos, 0.1)
+    else camera.position.lerp(_pos, 0.09)
     camera.lookAt(_look)
   })
 

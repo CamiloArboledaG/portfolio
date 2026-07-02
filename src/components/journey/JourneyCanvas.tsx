@@ -6,7 +6,6 @@ import { ScrollControls, PerformanceMonitor, AdaptiveDpr, Preload, useScroll } f
 import { scrollBridge } from '@/lib/scrollBridge'
 import { EffectComposer, Bloom, Vignette } from '@react-three/postprocessing'
 import { SCROLL_PAGES } from '@/lib/journey'
-import { useReducedMotion } from '@/hooks/useReducedMotion'
 import CameraRig from './CameraRig'
 import Terrain from './Terrain'
 import Water from './Water'
@@ -34,65 +33,6 @@ function ScrollBridge() {
   return null
 }
 
-function SnapScroll() {
-  const data = useScroll()
-  const reducedMotion = useReducedMotion()
-  useEffect(() => {
-    if (reducedMotion) return
-    const el = data.el
-    let snapping = false
-    let idle: ReturnType<typeof setTimeout>
-    let release: ReturnType<typeof setTimeout>
-
-    const snap = () => {
-      if (snapping) return
-      if (performance.now() < scrollBridge.suppressUntil) return
-      // drei sitúa la sección i en offset i/(SCROLL_PAGES-1) y su scrollThreshold
-      // es pages*clientHeight, así que el paso por sección es threshold/(pages-1),
-      // no clientHeight. Snapear en clientHeight desencuadra las secciones.
-      const threshold = el.scrollHeight - el.clientHeight
-      const step = threshold / (SCROLL_PAGES - 1)
-      const page = Math.round(el.scrollTop / step)
-      const target = Math.min(page * step, threshold)
-      if (Math.abs(target - el.scrollTop) < 2) return
-      snapping = true
-      el.scrollTo({ top: target, behavior: 'smooth' })
-      clearTimeout(release)
-      release = setTimeout(() => { snapping = false }, 650)
-    }
-
-    const supportsScrollEnd = 'onscrollend' in el
-    const onScrollEnd = () => { if (!snapping) snap() }
-    const onScroll = () => {
-      if (snapping) return
-      clearTimeout(idle)
-      idle = setTimeout(snap, 140)
-    }
-
-    const addEventListener = (eventName: string, handler: EventListener) => {
-      (el as EventTarget).addEventListener(eventName, handler, { passive: true })
-    }
-
-    const removeEventListener = (eventName: string, handler: EventListener) => {
-      (el as EventTarget).removeEventListener(eventName, handler)
-    }
-
-    if (supportsScrollEnd) {
-      addEventListener('scrollend', onScrollEnd as EventListener)
-    } else {
-      addEventListener('scroll', onScroll as EventListener)
-    }
-
-    return () => {
-      removeEventListener('scrollend', onScrollEnd as EventListener)
-      removeEventListener('scroll', onScroll as EventListener)
-      clearTimeout(idle)
-      clearTimeout(release)
-    }
-  }, [data, reducedMotion])
-  return null
-}
-
 export default function JourneyCanvas() {
   const [degraded, setDegraded] = useState(false)
 
@@ -105,14 +45,13 @@ export default function JourneyCanvas() {
 
   return (
     <div className="fixed inset-0">
-      <Canvas camera={{ position: [0, 10, -238], fov: 50, near: 0.1, far: 700 }} dpr={[1, 2]}>
+      <Canvas camera={{ position: [0, 10, -238], fov: 50, near: 0.1, far: 700 }} dpr={[1, 1.5]}>
         <ambientLight intensity={0.4} color="#ffe6c4" />
         <PerformanceMonitor onDecline={() => setDegraded(true)} />
         <AdaptiveDpr pixelated />
         <Suspense fallback={null}>
-          <ScrollControls pages={SCROLL_PAGES} damping={0.25}>
+          <ScrollControls pages={SCROLL_PAGES} damping={0.3}>
             <ScrollBridge />
-            <SnapScroll />
             <PointsOfInterest />
             <BiomeController />
             <CameraRig />
@@ -122,7 +61,7 @@ export default function JourneyCanvas() {
             <DistantRange />
             <Terrain />
             <Water />
-            <Snow count={degraded ? 200 : 600} />
+            <Snow count={degraded ? 200 : 450} />
             <Vegetation />
             <Wildlife />
             <ContentOverlay />
