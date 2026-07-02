@@ -4,7 +4,7 @@ export interface Experience {
   period: string
   location: string
   description: string[]
-  logo: string
+  logo?: string
 }
 
 export interface Project {
@@ -69,7 +69,6 @@ export const experiences: Experience[] = [
       'Optimized system efficiency and view performance, reducing load times under real traffic.',
       'Collaborated on frontend and backend tasks to ship customer-facing features.',
     ],
-    logo: '/images/botmeni.svg',
   },
 ]
 

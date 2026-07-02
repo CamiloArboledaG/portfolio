@@ -75,16 +75,22 @@ export default function Experience() {
                     >
                       <div className="flex items-start gap-4 mb-6">
                         <motion.div
-                          className="w-12 h-12 relative rounded-lg overflow-hidden bg-sage/12 flex-shrink-0"
+                          className="w-12 h-12 relative rounded-lg overflow-hidden bg-sage/12 flex-shrink-0 flex items-center justify-center"
                           whileHover={reducedMotion ? {} : { scale: 1.1, rotate: 5 }}
                         >
-                          <Image
-                            src={exp.logo}
-                            alt={`${exp.company} company logo`}
-                            fill
-                            sizes="48px"
-                            className="object-contain p-2"
-                          />
+                          {exp.logo ? (
+                            <Image
+                              src={exp.logo}
+                              alt={`${exp.company} company logo`}
+                              fill
+                              sizes="48px"
+                              className="object-contain p-2"
+                            />
+                          ) : (
+                            <span className="text-lg font-semibold text-sage" aria-hidden="true">
+                              {exp.company.charAt(0)}
+                            </span>
+                          )}
                         </motion.div>
                         <div>
                           <h3 className="text-xl font-semibold text-bark">{exp.role}</h3>
